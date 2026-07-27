@@ -26,3 +26,4 @@ VITE_FIREBASE_MEASUREMENT_ID         G-01VYZMYF84
 Port details:
 Vite default local dev port: 5173 (http://localhost:5173)
 Vercel handles production ports automatically (HTTPS Port 443).
+run
