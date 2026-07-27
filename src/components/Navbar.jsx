@@ -46,8 +46,8 @@ export const Navbar = ({ currentTab, setCurrentTab }) => {
 
   return (
     <>
-      {/* Main Unified Header Navbar - z-[100] Sticky Top Bar */}
-      <header className="sticky top-0 z-[100] glass-nav shadow-xs transition-all duration-300">
+      {/* Main Unified Header Navbar - z-[100] Fixed Top Bar */}
+      <header className="fixed top-0 inset-x-0 z-[100] glass-nav shadow-xs transition-all duration-300 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
           {/* Brand Logo */}
           <div
