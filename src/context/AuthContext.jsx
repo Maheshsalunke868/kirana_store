@@ -40,9 +40,12 @@ export const AuthProvider = ({ children }) => {
     const cleanId = String(adminId || '').trim().toLowerCase();
     const cleanPass = String(password || '').trim();
 
+    const envAdminEmail = (import.meta.env.VITE_ADMIN_EMAIL || 'admin@kirana').toLowerCase();
+    const envAdminPass = import.meta.env.VITE_ADMIN_PASSWORD || 'admin@1234kirana';
+
     if (
-      (cleanId === 'admin@kirana' || cleanId === 'admin' || cleanId === 'admin@kirana.com') &&
-      (cleanPass === 'admin@1234kirana' || cleanPass === '1234' || cleanPass === 'admin')
+      (cleanId === envAdminEmail || cleanId === 'admin@kirana' || cleanId === 'admin' || cleanId === 'admin@kirana.com') &&
+      (cleanPass === envAdminPass || cleanPass === 'admin@1234kirana' || cleanPass === '1234' || cleanPass === 'admin')
     ) {
       const adminUser = {
         ...DEFAULT_ADMIN,
@@ -54,7 +57,7 @@ export const AuthProvider = ({ children }) => {
 
     return {
       success: false,
-      message: 'Invalid Admin credentials! Use Username: admin@kirana & Password: admin@1234kirana'
+      message: 'Invalid Admin username or password. Access denied.'
     };
   };
 

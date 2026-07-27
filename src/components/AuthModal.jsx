@@ -26,9 +26,9 @@ export const AuthModal = () => {
   const [location, setLocation] = useState('');
   const [customerPassword, setCustomerPassword] = useState('');
 
-  // Admin Form Fields (Pre-populated with default values requested by user)
-  const [adminUsername, setAdminUsername] = useState('admin@kirana');
-  const [adminPassword, setAdminPassword] = useState('admin@1234kirana');
+  // Admin Form Fields
+  const [adminUsername, setAdminUsername] = useState('');
+  const [adminPassword, setAdminPassword] = useState('');
 
   if (!isAuthOpen) return null;
 
@@ -156,13 +156,6 @@ export const AuthModal = () => {
           {/* ADMIN LOGIN FORM */}
           {activeTab === 'admin-login' && (
             <div className="space-y-3">
-              <div className="p-2.5 bg-amber-50 border border-amber-200 rounded-xl text-[11px] text-amber-900 font-semibold">
-                <strong>Default Admin Login Credentials:</strong>
-                <div className="font-mono mt-0.5 text-[10px] text-amber-800">
-                  Username: <span className="underline">admin@kirana</span> | Password: <span className="underline">admin@1234kirana</span>
-                </div>
-              </div>
-
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">Admin Username / Email</label>
                 <div className="relative">
@@ -171,7 +164,7 @@ export const AuthModal = () => {
                     type="text"
                     value={adminUsername}
                     onChange={(e) => setAdminUsername(e.target.value)}
-                    placeholder="admin@kirana"
+                    placeholder="Enter admin email or username"
                     className="w-full pl-10 pr-4 py-2.5 text-sm font-medium bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:bg-white outline-none transition-all"
                     required
                   />
@@ -186,7 +179,7 @@ export const AuthModal = () => {
                     type="password"
                     value={adminPassword}
                     onChange={(e) => setAdminPassword(e.target.value)}
-                    placeholder="admin@1234kirana"
+                    placeholder="Enter admin password"
                     className="w-full pl-10 pr-4 py-2.5 text-sm font-medium bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:bg-white outline-none transition-all"
                     required
                   />
