@@ -58,32 +58,33 @@ export const CheckoutModal = ({ onOrderPlaced }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in overflow-y-auto">
-      <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full my-8 overflow-hidden border border-slate-100 relative">
+    <div className="fixed inset-0 z-[130] flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in overflow-y-auto">
+      <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full my-auto overflow-hidden border border-slate-100 relative max-h-[92vh] flex flex-col">
         {/* Modal Header */}
-        <div className="bg-slate-900 text-white p-6 flex items-center justify-between">
+        <div className="bg-slate-900 text-white p-4 sm:p-6 flex items-center justify-between shrink-0 border-b border-slate-800">
           <div>
-            <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Checkout & Payment</span>
-            <h2 className="text-xl font-extrabold mt-0.5">Complete Your Grocery Order</h2>
+            <span className="text-[10px] sm:text-xs font-bold text-emerald-400 uppercase tracking-wider">Checkout & Payment</span>
+            <h2 className="text-base sm:text-xl font-extrabold mt-0.5 leading-tight">Complete Your Grocery Order</h2>
           </div>
           <button
             onClick={() => setIsCheckoutOpen(false)}
-            className="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition-colors"
+            className="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition-colors shrink-0"
+            title="Close Checkout"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Modal Form */}
-        <form onSubmit={handlePlaceOrder} className="p-6 space-y-6">
+        {/* Modal Scrollable Form Body */}
+        <form onSubmit={handlePlaceOrder} className="p-4 sm:p-6 space-y-4 sm:space-y-6 overflow-y-auto flex-1">
           {/* Customer Details Section */}
           <div className="space-y-3">
             <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center space-x-1">
-              <User className="w-4 h-4 text-emerald-600" />
+              <User className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Customer & Delivery Details</span>
             </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-medium text-slate-700 mb-1">Customer Name</label>
                 <div className="relative">
@@ -92,7 +93,7 @@ export const CheckoutModal = ({ onOrderPlaced }) => {
                     type="text"
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:bg-white outline-none"
+                    className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:bg-white outline-none"
                     required
                   />
                 </div>
@@ -106,7 +107,7 @@ export const CheckoutModal = ({ onOrderPlaced }) => {
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:bg-white outline-none"
+                    className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:bg-white outline-none"
                     required
                   />
                 </div>
@@ -121,72 +122,72 @@ export const CheckoutModal = ({ onOrderPlaced }) => {
                   rows="2"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:bg-white outline-none resize-none"
+                  className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:bg-white outline-none resize-none"
                   required
                 />
               </div>
             </div>
           </div>
 
-          {/* Payment Method Selector */}
+          {/* Payment Method Selector - Mobile Responsive 1-col / 2-col */}
           <div className="space-y-3">
             <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center space-x-1">
-              <Banknote className="w-4 h-4 text-emerald-600" />
+              <Banknote className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Select Payment Method</span>
             </h3>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <button
                 type="button"
                 onClick={() => setPaymentMethod('UPI')}
-                className={`p-4 rounded-2xl border-2 text-left transition-all ${paymentMethod === 'UPI'
-                    ? 'border-emerald-600 bg-emerald-50/50 text-emerald-900 shadow-sm'
+                className={`p-3.5 rounded-2xl border-2 text-left transition-all ${paymentMethod === 'UPI'
+                    ? 'border-emerald-600 bg-emerald-50/60 text-emerald-900 shadow-sm'
                     : 'border-slate-200 hover:border-slate-300 text-slate-700'
                   }`}
               >
                 <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center space-x-2 font-bold text-sm">
-                    <QrCode className="w-5 h-5 text-emerald-600" />
+                  <div className="flex items-center space-x-2 font-extrabold text-xs sm:text-sm">
+                    <QrCode className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 shrink-0" />
                     <span>Instant UPI Payment</span>
                   </div>
-                  {paymentMethod === 'UPI' && <CheckCircle className="w-4 h-4 text-emerald-600" />}
+                  {paymentMethod === 'UPI' && <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />}
                 </div>
-                <p className="text-xs text-slate-500">Google Pay, PhonePe, Paytm, BHIM</p>
+                <p className="text-[11px] text-slate-500">Google Pay, PhonePe, Paytm, BHIM</p>
               </button>
 
               <button
                 type="button"
                 onClick={() => setPaymentMethod('Cash on Delivery')}
-                className={`p-4 rounded-2xl border-2 text-left transition-all ${paymentMethod === 'Cash on Delivery'
-                    ? 'border-emerald-600 bg-emerald-50/50 text-emerald-900 shadow-sm'
+                className={`p-3.5 rounded-2xl border-2 text-left transition-all ${paymentMethod === 'Cash on Delivery'
+                    ? 'border-emerald-600 bg-emerald-50/60 text-emerald-900 shadow-sm'
                     : 'border-slate-200 hover:border-slate-300 text-slate-700'
                   }`}
               >
                 <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center space-x-2 font-bold text-sm">
-                    <Banknote className="w-5 h-5 text-amber-600" />
+                  <div className="flex items-center space-x-2 font-extrabold text-xs sm:text-sm">
+                    <Banknote className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600 shrink-0" />
                     <span>Cash on Delivery</span>
                   </div>
-                  {paymentMethod === 'Cash on Delivery' && <CheckCircle className="w-4 h-4 text-emerald-600" />}
+                  {paymentMethod === 'Cash on Delivery' && <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />}
                 </div>
-                <p className="text-xs text-slate-500">Pay cash upon store delivery</p>
+                <p className="text-[11px] text-slate-500">Pay cash upon store delivery</p>
               </button>
             </div>
 
-            {/* UPI QR Code Simulator */}
+            {/* UPI QR Code Display - Fully Responsive Stack on Mobile */}
             {paymentMethod === 'UPI' && (
-              <div className="p-4 bg-slate-900 rounded-2xl text-white space-y-3 animate-fade-in">
-                <div className="flex items-center justify-between">
+              <div className="p-3.5 sm:p-4 bg-slate-900 rounded-2xl text-white space-y-3 animate-fade-in">
+                <div className="flex items-center justify-between gap-2">
                   <div>
-                    <p className="text-xs font-semibold text-emerald-400">Scan & Pay via any UPI App</p>
-                    <p className="text-[11px] text-slate-400">Store VPA: <span className="text-white font-mono font-bold">kirana.express@upi</span></p>
+                    <p className="text-xs font-bold text-emerald-400">Scan & Pay via any UPI App</p>
+                    <p className="text-[11px] text-slate-300">VPA: <span className="text-amber-300 font-mono font-bold">kirana.express@upi</span></p>
                   </div>
-                  <span className="text-sm font-extrabold text-amber-400">₹{grandTotal}</span>
+                  <span className="text-sm font-extrabold text-amber-400 shrink-0">₹{grandTotal}</span>
                 </div>
 
-                <div className="flex items-center space-x-4 bg-white/10 p-3 rounded-xl">
-                  {/* Simulated SVG QR Code */}
-                  <div className="w-24 h-24 bg-white p-2 rounded-lg shrink-0 flex items-center justify-center">
+                <div className="flex flex-col sm:flex-row items-center gap-3 bg-white/10 p-3 rounded-xl">
+                  {/* QR Code Graphic */}
+                  <div className="w-24 h-24 bg-white p-2 rounded-lg shrink-0 flex items-center justify-center shadow-md">
                     <div className="w-full h-full border-4 border-slate-900 p-1 grid grid-cols-3 gap-1">
                       <div className="bg-slate-900 rounded-xs"></div>
                       <div className="bg-emerald-600 rounded-xs"></div>
@@ -199,16 +200,17 @@ export const CheckoutModal = ({ onOrderPlaced }) => {
                       <div className="bg-emerald-600 rounded-xs"></div>
                     </div>
                   </div>
-                  <div className="space-y-1 text-xs">
-                    <p className="font-semibold text-slate-200">Payment Reference (Optional UTR)</p>
+
+                  <div className="space-y-1 text-xs w-full">
+                    <p className="font-semibold text-slate-200">Payment Reference (UTR Number)</p>
                     <input
                       type="text"
-                      placeholder="e.g. UPI/619283749102/SBI (Auto-fills if blank)"
+                      placeholder="e.g. UPI/619283749102/SBI"
                       value={utrNumber}
                       onChange={(e) => setUtrNumber(e.target.value)}
-                      className="w-full px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-lg text-xs text-white outline-none focus:border-emerald-500"
+                      className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs text-white outline-none focus:border-emerald-500"
                     />
-                    <p className="text-[10px] text-slate-400">Instant verification upon order confirmation</p>
+                    <p className="text-[10px] text-slate-400">Auto-fills if left blank for quick ordering</p>
                   </div>
                 </div>
               </div>
@@ -216,13 +218,13 @@ export const CheckoutModal = ({ onOrderPlaced }) => {
           </div>
 
           {/* Order Summary Box */}
-          <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
+          <div className="p-3.5 sm:p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
             <h4 className="text-xs font-bold text-slate-700 uppercase">Order Summary ({cart.length} items)</h4>
             <div className="max-h-32 overflow-y-auto divide-y divide-slate-200 text-xs">
               {cart.map((item) => (
-                <div key={item.id} className="py-1.5 flex justify-between">
-                  <span className="text-slate-700">{item.name} ({item.unit}) × {item.quantity}</span>
-                  <span className="font-semibold text-slate-900">₹{item.price * item.quantity}</span>
+                <div key={item.id} className="py-1.5 flex justify-between gap-2">
+                  <span className="text-slate-700 truncate">{item.name} ({item.unit}) × {item.quantity}</span>
+                  <span className="font-semibold text-slate-900 shrink-0">₹{item.price * item.quantity}</span>
                 </div>
               ))}
             </div>
@@ -235,14 +237,15 @@ export const CheckoutModal = ({ onOrderPlaced }) => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg shadow-emerald-600/20 flex items-center justify-center space-x-2 transition-all text-base"
+            className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold rounded-xl shadow-lg shadow-emerald-600/20 flex items-center justify-center space-x-2 transition-all text-xs sm:text-sm active:scale-98"
           >
-            <ShieldCheck className="w-5 h-5" />
+            <ShieldCheck className="w-5 h-5 shrink-0" />
             <span>Confirm & Place Order (₹{grandTotal})</span>
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-4 h-4 shrink-0" />
           </button>
         </form>
       </div>
     </div>
   );
 };
+
