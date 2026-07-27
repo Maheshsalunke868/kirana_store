@@ -16,7 +16,7 @@ export const ProductsPage = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="space-y-6 pb-12">
+    <div className="space-y-6 pb-24 sm:pb-16">
       {/* Header */}
       <div className="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>

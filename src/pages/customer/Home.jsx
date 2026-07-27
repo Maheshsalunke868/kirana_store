@@ -29,7 +29,7 @@ export const Home = ({ setCurrentTab }) => {
   };
 
   return (
-    <div className="space-y-8 sm:space-y-12 pb-16">
+    <div className="space-y-8 sm:space-y-12 pb-24 sm:pb-16">
       {/* Hero Banner */}
       <div className="relative bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-6 sm:p-12 shadow-2xl border border-slate-800 overflow-hidden">
         <div className="relative z-10 max-w-2xl space-y-4 sm:space-y-6">
